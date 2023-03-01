@@ -1,0 +1,55 @@
+pipeline {
+    agent none 
+    stages{
+        stage('BUILD') {
+		agent { label: 'slave1' }
+            steps{
+                 sh '''
+                    sleep 5
+                    echo "This is a BUILD stage"
+                '''
+            }
+        }
+
+        stage('BUILD1.1') {
+		agent { label: 'slave2' }
+
+            steps{
+                 sh '''
+                    sleep 5
+                    echo "This is a BUILD1.1 stage"
+                '''
+            }
+        }
+
+        stage('BUILD1.2') {
+		 agent { label: 'slave2' }
+            steps{
+                 sh '''
+                    sleep 5
+                    echo "This is a BUILD1.2 stage"
+                '''
+            }
+        }
+ 
+        stage('TEST') {
+		 agent { label: 'slave1' }
+            steps{
+                sh '''
+                    sleep 5
+                    echo "This is a TEST stage"
+                '''
+            }
+        }
+
+        stage('DEPLOY') {
+		 agent { label: 'slave2' }
+            steps{
+                sh '''
+                    sleep 5
+                    echo "This is a DEPLOY stage"
+                '''
+            }
+        }
+    }
+}
