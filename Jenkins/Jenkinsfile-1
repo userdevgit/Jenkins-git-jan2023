@@ -1,4 +1,3 @@
-// Run stages only if the branch is master
 piepline {
     agent any 
     stages {
