@@ -1,6 +1,6 @@
 // There are 3 stages A, B and C. 1. Run stage B only if stage A is success 2. Run stage C only if stage A is Failure.
 
-def boolean stage_result = false
+
 pipeline {
     agent any 
     stages {
