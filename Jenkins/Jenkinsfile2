@@ -1,6 +1,12 @@
 //Run 2 test stages parallely only if the branch is master
 pipeline {
     agent any 
+    parameters {
+        string defaultValue: 'master', name: 'branch', trim: true
+    }
+
+    environment {
+        BRANCH_NAME = "${branch}"
     stages {
         stage('parallel') {
             parallel {
