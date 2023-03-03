@@ -4,9 +4,7 @@ pipeline {
         string defaultValue: 'master', name: 'branch', trim: true
     }
 
-    environment {
-        BRANCH_NAME = "${branch}"
-    }
+   
     stages {
         stage('STAGE-1') {
             when {
